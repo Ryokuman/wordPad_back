@@ -16,6 +16,8 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sequelize": "^6.31.1"
   }
 }
