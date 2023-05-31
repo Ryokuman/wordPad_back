@@ -19,7 +19,7 @@ export class User extends Model<UserAttributes> {
 User.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
