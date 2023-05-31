@@ -10,7 +10,8 @@
   "joi": "^17.9.2", // validate library
   "morgan": "^1.10.0", // logging library
   "express": "^4.18.2", // express.js
-  "sequelize": "^6.31.1" // sequelize
+  "sequelize": "^6.31.1", // sequelize
+  "uuid": "^9.0.0" // uuid
 }
 ```
 
