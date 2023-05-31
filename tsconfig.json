@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es2022",
-    "target": "es2017",
+    "module": "CommonJS",
+    "target": "ES2022",
     "moduleResolution": "node",
     "strict": true,
     "alwaysStrict": true,
@@ -17,7 +17,13 @@
       "@repositories/*": ["src/repositories/*"],
       "@routes/*": ["src/routes/*"],
       "@services/*": ["src/services/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+
+      "@models": ["src/models"],
+      "@repositories": ["src/repositories"],
+      "@routes": ["src/routes"],
+      "@services": ["src/services"],
+      "@utils": ["src/utils"]
     }
   },
 
