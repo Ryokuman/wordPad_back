@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "./index";
+import { Word } from "./word";
 
 // These are all the attributes in the User model
 interface UserAttributes {
@@ -9,7 +10,7 @@ interface UserAttributes {
 }
 
 export class User extends Model<UserAttributes> {
-  public id!: string;
+  public readonly id!: string;
   public email!: string;
   public password!: string;
   public readonly createdAt!: Date;
@@ -41,3 +42,9 @@ User.init(
     updatedAt: "updateTimestamp",
   }
 );
+
+User.hasMany(Word, {
+  sourceKey: "id",
+  foreignKey: "owner",
+  as: "userHasManyScores",
+});

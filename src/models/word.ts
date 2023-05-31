@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "./index";
+import { User } from "./user";
 
 // These are all the attributes in the Word model
 interface WordAttributes {
@@ -10,7 +11,7 @@ interface WordAttributes {
 }
 
 export class Word extends Model<WordAttributes> {
-  public id!: string;
+  public readonly id!: string;
   public name!: string;
   public meaning!: string;
   public tags!: string;
@@ -47,3 +48,7 @@ Word.init(
     updatedAt: "updateTimestamp",
   }
 );
+
+Word.belongsTo(User, {
+  foreignKey: "owner",
+});
