@@ -13,7 +13,11 @@
     "outDir": "./result/tsc",
     "baseUrl": ".",
     "paths": {
-      "@routes/*": ["src/routes/*"]
+      "@models/*": ["src/models/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
 
