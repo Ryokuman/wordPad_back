@@ -24,6 +24,7 @@
   "tsconfig-paths": "^4.2.0", // ts-node path library
 
   "@types/cors": "^2.8.13", // types
+  "@types/uuid": "^9.0.1",
   "@types/dotenv": "^8.2.0",
   "@types/express": "^4.17.17",
   "@types/node": "^20.2.5",
