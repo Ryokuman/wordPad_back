@@ -1,11 +1,29 @@
-import express, { Request, Response } from "express";
-import route from "@routes/route";
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import { sequelize } from "@models";
+import router from "./app";
 
-const port = route;
+dotenv.config();
+
+const port = Number(process.env.PORT);
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use("/", router);
 
-app.get("/", (req: Request, res: Response) => res.send("server is running with " + port));
+app.listen(port, async () => {
+  console.log(`Server Listening on ${port}`);
 
-app.listen(port);
+  //sequelize-db connection test
+  await sequelize
+    .authenticate()
+    .then(async () => {
+      console.log("connection success");
+    })
+    .catch((e) => {
+      console.log("TT : ", e);
+    });
+  await sequelize.sync(); // migration
+});
