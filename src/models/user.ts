@@ -2,20 +2,27 @@ import { DataTypes, Model } from "sequelize";
 import { sequelize } from "./index";
 
 // These are all the attributes in the User model
-interface UsersAttributes {
+interface UserAttributes {
+  id: string;
   email: string;
   password: string | null;
 }
 
-export class Users extends Model<UsersAttributes> {
+export class User extends Model<UserAttributes> {
+  public id!: string;
   public email!: string;
   public password!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
 
-Users.init(
+User.init(
   {
+    id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      primaryKey: true,
+    },
     email: {
       type: DataTypes.STRING(45),
       allowNull: false,
@@ -26,8 +33,8 @@ Users.init(
     },
   },
   {
-    modelName: "Users",
-    tableName: "Users",
+    modelName: "User",
+    tableName: "User",
     sequelize,
     freezeTableName: true,
     timestamps: true,
