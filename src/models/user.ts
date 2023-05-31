@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Association } from "sequelize";
 import { sequelize } from "./index";
 import { Word } from "./word";
 
@@ -15,6 +15,10 @@ export class User extends Model<UserAttributes> {
   public password!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+
+  public static associations: {
+    userHasManyWord: Association<Word, User>;
+  };
 }
 
 User.init(

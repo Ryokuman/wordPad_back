@@ -1,10 +1,11 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Association } from "sequelize";
 import { sequelize } from "./index";
 import { User } from "./user";
 
 // These are all the attributes in the Word model
 interface WordAttributes {
   id: string;
+  owner: string;
   name: string;
   meaning: string[];
   tags: string[];
@@ -17,14 +18,22 @@ export class Word extends Model<WordAttributes> {
   public tags!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+
+  public static associations: {
+    wordBelongsToUser: Association<User, Word>;
+  };
 }
 
 Word.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
+    },
+    owner: {
+      type: DataTypes.UUIDV4,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING(45),
