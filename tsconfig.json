@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "module": "CommonJS",
+    "target": "ES2022",
     "moduleResolution": "node",
     "strict": true,
     "alwaysStrict": true,
@@ -13,7 +13,17 @@
     "outDir": "./result/tsc",
     "baseUrl": ".",
     "paths": {
-      "@routes/*": ["src/routes/*"]
+      "@models/*": ["src/models/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+
+      "@models": ["src/models"],
+      "@repositories": ["src/repositories"],
+      "@routes": ["src/routes"],
+      "@services": ["src/services"],
+      "@utils": ["src/utils"]
     }
   },
 

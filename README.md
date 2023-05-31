@@ -9,7 +9,11 @@
   "helmet": "^7.0.0", // security library
   "joi": "^17.9.2", // validate library
   "morgan": "^1.10.0", // logging library
-  "express": "^4.18.2" // express.js
+  "express": "^4.18.2", // express.js
+  "uuid": "^9.0.0", // uuid
+
+  "sequelize": "^6.31.1", // sequelize
+  "pg": "^8.11.0" // sequelize library
 }
 ```
 
@@ -22,6 +26,7 @@
   "tsconfig-paths": "^4.2.0", // ts-node path library
 
   "@types/cors": "^2.8.13", // types
+  "@types/uuid": "^9.0.1",
   "@types/dotenv": "^8.2.0",
   "@types/express": "^4.17.17",
   "@types/node": "^20.2.5",

@@ -6,7 +6,11 @@ module.exports = {
   target: "node",
   resolve: {
     alias: {
+      "@models": path.resolve(__dirname, "result/tsc/models"),
+      "@repositories": path.resolve(__dirname, "result/tsc/repositories"),
       "@routes": path.resolve(__dirname, "result/tsc/routes"),
+      "@services": path.resolve(__dirname, "result/tsc/services"),
+      "@utils": path.resolve(__dirname, "result/tsc/utils"),
     },
     fallback: {
       http: require.resolve("stream-http"),
