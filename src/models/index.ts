@@ -1,8 +1,9 @@
-import sequelize from "@utils/connect.js";
-import User from "./user.js";
+import { Sequelize } from "sequelize";
+import { config } from "@utils/config";
 
-async function bulk() {
-  await sequelize.sync({ force: true }); // sync 시작
-}
+const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, {
+  host: config.development.host,
+  dialect: "postgres",
+});
 
-export { User, bulk };
+export { sequelize };
