@@ -1,25 +1,25 @@
 import { Op } from "sequelize";
-import User from "@models/user";
+import { User } from "@models/user";
 import { v4 } from "uuid";
 
-async function createUser(email: string, userID: string, password: string) {
+async function createUser(email: string, password: string) {
   try {
     const uuid = v4();
-    await User.create({ id: uuid, userID: userID, email: email, password: password });
+    await User.create({ id: uuid, email: email, password: password });
     return "complete";
   } catch (error) {
     throw error;
   }
 }
 
-async function findByUserID(userID: string) {
+async function findByEmail(email: string) {
   const result = await User.findAll({
     where: {
-      userID: { [Op.eq]: userID },
+      email: { [Op.eq]: email },
     },
   });
 
   return result;
 }
 
-export default { findByUserID, createUser };
+export default { findByEmail, createUser };
