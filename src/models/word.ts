@@ -14,8 +14,8 @@ interface WordAttributes {
 export class Word extends Model<WordAttributes> {
   public readonly id!: string;
   public name!: string;
-  public meaning!: string;
-  public tags!: string;
+  public meaning!: string[];
+  public tags!: string[];
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
