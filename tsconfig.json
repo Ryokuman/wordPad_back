@@ -10,6 +10,8 @@
     "listEmittedFiles": true,
     "esModuleInterop": true,
 
+    "typeRoots": ["./src"],
+
     "outDir": "./result/tsc",
     "baseUrl": ".",
     "paths": {

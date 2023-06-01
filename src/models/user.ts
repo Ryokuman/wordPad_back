@@ -1,5 +1,6 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Association } from "sequelize";
 import { sequelize } from "./index";
+import { Word } from "./word";
 
 // These are all the attributes in the User model
 interface UserAttributes {
@@ -9,17 +10,21 @@ interface UserAttributes {
 }
 
 export class User extends Model<UserAttributes> {
-  public id!: string;
+  public readonly id!: string;
   public email!: string;
   public password!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+
+  public static associations: {
+    userHasManyWord: Association<Word, User>;
+  };
 }
 
 User.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -41,3 +46,9 @@ User.init(
     updatedAt: "updateTimestamp",
   }
 );
+
+User.hasMany(Word, {
+  sourceKey: "id",
+  foreignKey: "owner",
+  as: "userHasManyScores",
+});
