@@ -4,7 +4,7 @@ import { User } from "./user";
 
 // These are all the attributes in the Word model
 interface WordAttributes {
-  id: string;
+  wordId: string;
   owner: string;
   name: string;
   meaning: string[];
@@ -12,7 +12,7 @@ interface WordAttributes {
 }
 
 export class Word extends Model<WordAttributes> {
-  public readonly id!: string;
+  public readonly wordId!: string;
   public name!: string;
   public meaning!: string[];
   public tags!: string[];
@@ -26,7 +26,7 @@ export class Word extends Model<WordAttributes> {
 
 Word.init(
   {
-    id: {
+    wordId: {
       type: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,

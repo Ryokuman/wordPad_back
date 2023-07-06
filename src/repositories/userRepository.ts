@@ -5,7 +5,7 @@ import { v4 } from "uuid";
 async function createUser(email: string, password: string) {
   try {
     const uuid = v4();
-    await User.create({ id: uuid, email: email, password: password });
+    await User.create({ userId: uuid, email: email, password: password });
     return "complete";
   } catch (error) {
     throw error;

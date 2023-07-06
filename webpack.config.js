@@ -27,7 +27,4 @@ module.exports = {
     path: path.resolve(__dirname, "result/build"),
     filename: "index.js",
   },
-  devServer: {
-    port: 8080,
-  },
 };

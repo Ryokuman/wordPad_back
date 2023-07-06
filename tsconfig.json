@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
     "target": "ES2022",
+    "module": "CommonJS",
     "moduleResolution": "node",
+
+    "rootDir": "src",
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
     "strict": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
@@ -10,9 +16,7 @@
     "listEmittedFiles": true,
     "esModuleInterop": true,
 
-    "typeRoots": ["./src"],
-
-    "outDir": "./result/tsc",
+    "outDir": "./result",
     "baseUrl": ".",
     "paths": {
       "@models/*": ["src/models/*"],
