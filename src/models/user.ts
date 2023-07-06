@@ -1,25 +1,53 @@
-import { DataTypes, Model, Association } from "sequelize";
-import { sequelize } from "./index";
-import { Word } from "./word";
+import {
+  Model,
+  DataTypes,
+  BelongsToManyGetAssociationsMixin,
+  HasManyGetAssociationsMixin,
+  BelongsToManyRemoveAssociationMixin,
+  BelongsToManyAddAssociationMixin,
+} from "sequelize";
 
-// These are all the attributes in the User model
-interface UserAttributes {
-  id: string;
-  email: string;
-  password: string | null;
-}
+import { sequelize } from "./sequelize";
 
-export class User extends Model<UserAttributes> {
+class User extends Model {
   public readonly id!: string;
   public email!: string;
   public password!: string;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-
-  public static associations: {
-    userHasManyWord: Association<Word, User>;
-  };
 }
+
+User.init(
+  {
+    nickname: {
+      type: DataTypes.STRING(20),
+    },
+    userId: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      unique: true,
+    },
+    password: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    modelName: "User",
+    tableName: "user",
+    charset: "utf8",
+    collate: "utf8_general_ci",
+  }
+);
+
+export const associate = (db: dbType) => {
+  db.User.hasMany(db.Post, { as: "Posts" });
+  db.User.hasMany(db.Comment);
+};
+
+export default User;
+
 
 User.init(
   {

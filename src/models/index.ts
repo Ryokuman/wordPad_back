@@ -1,9 +1,9 @@
-import { Sequelize } from "sequelize";
-import { config } from "@utils/config";
+import User, { associate as associateUser } from "./user";
 
-const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, {
-  host: config.development.host,
-  dialect: "postgres",
-});
+export * from "./sequelize";
+const db = {
+  User,
+};
+export type dbType = typeof db;
 
-export { sequelize };
+associateUser(db);

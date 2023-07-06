@@ -14,7 +14,7 @@ async function signIn(email: string, password: string) {
     const userData = await userRepository.findByEmail(email);
 
     const result = {
-      id: userData[0].dataValues.id,
+      id: userData[0].dataValues.userId,
       email: userData[0].dataValues.email,
     };
 

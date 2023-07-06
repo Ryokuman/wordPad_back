@@ -1,6 +1,6 @@
 ## librares
 
-- dependencies
+### dependencies
 
 ```json
 {
@@ -17,7 +17,7 @@
 }
 ```
 
-- devDependencies
+### devDependencies
 
 ```json
 {
