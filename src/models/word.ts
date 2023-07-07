@@ -1,5 +1,6 @@
 import { DataTypes, Model, Association } from "sequelize";
 import { sequelize } from "./index";
+import { dbType } from "./index";
 import { User } from "./user";
 
 // These are all the attributes in the Word model
@@ -27,7 +28,8 @@ export class Word extends Model<WordAttributes> {
 Word.init(
   {
     wordId: {
-      type: DataTypes.UUIDV4,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -58,6 +60,6 @@ Word.init(
   }
 );
 
-Word.belongsTo(User, {
-  foreignKey: "owner",
-});
+export const associate = (db: dbType) => {
+  db.Word.belongsTo(db.User, { as: "Owner" });
+};
