@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { sequelize } from "@models";
+import sequelize from "@models/sequelize";
 import router from "./app";
+import config from "./config/config";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.listen(port, async () => {
     })
     .catch((e) => {
       console.log("TT : ", e);
+      console.log(config);
     });
   await sequelize.sync(); // migration
 });
