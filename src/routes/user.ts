@@ -5,7 +5,7 @@ import { sign, verify } from "jsonwebtoken";
 
 import { User } from "@models/user";
 import { makePw, checkPw } from "@utils/pwUtil";
-import { jwt } from "src/config/config";
+import { jwt } from "@config/config";
 
 type decodedType = { id: string; iat: number; exp: number };
 

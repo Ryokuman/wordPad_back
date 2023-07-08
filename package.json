@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon  --exec 'ts-node' -r tsconfig-paths/register src/index.ts -e ts",
-    "start": "node ./result/build/index.js",
+    "start": "node ./result/index.js",
     "build": "tsc && tsc-alias",
     "build:start": "npm run build && npm start"
   },
