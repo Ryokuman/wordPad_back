@@ -21,15 +21,16 @@ User.init(
     },
     email: {
       type: DataTypes.STRING(45),
+      unique: true,
       allowNull: false,
     },
     password: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING(60),
+      allowNull: false,
     },
     salt: {
-      type: DataTypes.STRING(45),
-      allowNull: true,
+      type: DataTypes.STRING(29),
+      allowNull: false,
     },
   },
   {
