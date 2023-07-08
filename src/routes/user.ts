@@ -24,6 +24,25 @@ user.get("", async (req, res) => {
   }
 });
 
+user.get("acc", async (req, res) => {
+  try {
+    if (req.headers.authorization)
+      verify(req.headers.authorization, jwt.secret, async (err, decoded) => {
+        const data = <decodedType>decoded;
+        const result = await User.findOne({ where: { id: data.id } });
+
+        const acToken = sign({ id: result?.dataValues.id }, jwt.secret, {
+          algorithm: jwt.algorithm,
+          expiresIn: 60 * 60 * 24,
+        });
+
+        res.status(201).send({ acToken });
+      });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 user.post("/signin", async (req, res) => {
   try {
     const result = await User.findOne({ where: { email: req.body.email } });
@@ -31,15 +50,15 @@ user.post("/signin", async (req, res) => {
     if (result && (await checkPw(req.body.password, result.dataValues.password, result.dataValues.salt))) {
       const acToken = sign({ id: result.dataValues.id }, jwt.secret, {
         algorithm: jwt.algorithm,
-        expiresIn: 60 * 60 + 24,
+        expiresIn: 60 * 60 * 24,
       });
 
       const rfToken = sign({ id: result.dataValues.id }, jwt.secret, {
         algorithm: jwt.algorithm,
-        expiresIn: 60 * 60 + 24 * 14,
+        expiresIn: 60 * 60 * 24 * 14,
       });
 
-      res.status(200).json({ acToken, rfToken });
+      res.status(201).json({ acToken, rfToken });
     } else res.status(401).send("wrong value");
   } catch (error) {
     console.log(error);
