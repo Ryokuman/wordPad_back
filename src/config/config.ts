@@ -1,6 +1,12 @@
 import dotenv from "dotenv";
+import { Algorithm, Secret } from "jsonwebtoken";
 import { Dialect } from "sequelize";
 dotenv.config();
+
+type IJwt = {
+  algorithm: Algorithm;
+  secret: Secret;
+};
 
 type Iconfig = {
   username: string;
@@ -20,4 +26,10 @@ const config: Iconfig = {
   dialect: "postgres",
 };
 
+const jwt: IJwt = {
+  algorithm: "HS256",
+  secret: process.env.JWT_SECRET || "undefined",
+};
+
 export default config;
+export { jwt };
