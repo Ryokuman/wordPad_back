@@ -9,8 +9,9 @@ dotenv.config();
 
 const port = Number(process.env.PORT);
 const app = express();
+const corsOpt = { origin: ["http://localhost:3000", "http://localhost"] };
 
-app.use(cors());
+app.use(cors(corsOpt));
 app.use(express.json());
 app.use("/", router);
 
