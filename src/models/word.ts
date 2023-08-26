@@ -61,5 +61,5 @@ Word.init(
 );
 
 export const associate = (db: dbType) => {
-  db.Word.belongsTo(db.User, { as: "Owner" });
+  db.Word.belongsTo(db.User, { as: "owner", foreignKey: "id" });
 };
